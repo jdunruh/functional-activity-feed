@@ -1,0 +1,17 @@
+{
+  "name": "polymorphic-activity-feed-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "browserify": "watchify src/*.js -o dist/app.js -t babelify",
+    "start": "http-server -c-1 -o",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babelify": "^6.3.0",
+    "moment": "^2.10.6"
+  }
+}

@@ -1,0 +1,44 @@
+body > h1 {
+  margin-left: 1rem;
+}
+
+article {
+  margin: 1em;
+  border: 1px solid #ccc;
+  padding: 1em;
+  overflow: auto;
+}
+
+article i {
+  float: left;
+  margin-right: 1em;
+}
+
+article h1 {
+  margin-left: 2em;
+  margin-top: 0;
+}
+
+article p.info {
+  margin-left: 2em;
+}
+
+article.photo p.info {
+  float: left;
+  margin: 0;
+}
+
+article h1 {
+  font-size: 100%;
+}
+
+article p.date {
+  float: right;
+  margin: 0;
+  padding: 0;
+}
+
+article img {
+  float: left;
+  margin-right: 1em;
+}
