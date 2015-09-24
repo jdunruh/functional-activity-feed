@@ -3,16 +3,17 @@
 Run with:
 
 ```
-npm install
-npm run browserify
+run http-server in the root of the project (npm -g http-server if you need to install)
+In the browser, go to localhost:8080
 ```
 
-In a separate tab:
 
-```
-npm start
-```
 
-# Purpose
 
-Used as a base for a live-coding demo refactoring the feed.js file to polymorphism.
+Rework of the gSchool polymorphic-activity-feed OO refactoring demo in a functional style.
+
+Key Aspects:
+* use of .bind for partial application
+* remove many jQuery calls in favor of string concatenation
+* purify functions - remove side effects in favor of returning a value
+* push side effects (reading JSON feeds and updating DOM) to the edges of the system and encapsulate them in functions

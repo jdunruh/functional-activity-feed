@@ -11,6 +11,7 @@ var companies = function (companyList, userHash) {
    return  companyList.map(function (company) {
         company.creator = userHash[company.created_by_id];
         company.formatter = renderArticle.bind(null, 'company', companyFormatter);
+       company.timestamp = company.created_at;
         return company;
     });
 };
@@ -20,6 +21,7 @@ var photos = function (photoList, userHash) {
     return photoList.map(function (photo) {
         photo.creator = userHash[photo.created_by_id];
         photo.formatter = renderArticle.bind(null, 'photo', photoFormatter);
+        photo.timestamp = photo.published_at;
         return photo;
     });
 };
@@ -27,21 +29,22 @@ var photos = function (photoList, userHash) {
 var users = function (userList) {
     return userList.map(function (user) {
         user.formatter = renderArticle.bind(null, 'user', userFormatter);
+        user.timestamp = user.created_at;
         return user;
     });
 };
 
 var activityFeed = function (users, companies, photos) {
     return users.concat(companies, photos).sort(function (item1, item2) {
-        var a = new Date(item1.created_at || item1.published_at);
-        var b = new Date(item2.created_at || item2.published_at);
+        var a = new Date(item1.timestamp);
+        var b = new Date(item2.timestamp);
         return a > b ? -1 : a < b ? 1 : 0;
     });
 };
 
 var renderHeader = function (articleClass, entry) {
     return '<article class="' + articleClass + '">' + '<p class="date">' +
-        moment(new Date(entry.created_at)).fromNow() + '</p>';
+        moment(new Date(entry.timestamp)).fromNow() + '</p>';
 };
 
 var renderArticle = function (articleClass, articleFormatter, entry) {
